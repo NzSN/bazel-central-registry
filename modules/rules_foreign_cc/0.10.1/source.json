@@ -1,9 +1,6 @@
 {
-    "url": "https://github.com/bazelbuild/rules_foreign_cc/releases/download/0.10.1/rules_foreign_cc-0.10.1.tar.gz",
-    "integrity": "sha256-R2MDvQ8bBMwxH8JY8XCKX274LTCR5T/Rl3+iA4NCWmo=",
+    "url": "https://github.com/NzSN/rules_foreign_cc/archive/refs/tags/v0.10.1.tar.gz",
+    "integrity": "sha256-azpZWWc2u5lIpHUWWSzl3Jj3D9ICFV/cRWt/uBmdR5I=",
     "strip_prefix": "rules_foreign_cc-0.10.1",
-    "patch_strip": 0,
-    "patches": {
-        "module_dot_bazel.patch": "sha256-hDvLi+Nx91lvhEd2qRrPfPu0RjiG5w3a/c4N4AiJb3U="
-    }
+    "patch_strip": 0
 }
