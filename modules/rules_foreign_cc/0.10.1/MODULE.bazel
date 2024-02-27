@@ -1,4 +1,3 @@
-
 "bazelbuild/rules_foreign_cc"
 
 module(
