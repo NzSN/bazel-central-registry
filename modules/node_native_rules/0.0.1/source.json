@@ -1,6 +1,5 @@
 {
     "url": "https://github.com/NzSN/node_native_rules/archive/refs/tags/0.0.1.tar.gz",
     "integrity": "sha256-wRIfvdmGES7xbTnYlF8QMlbTBx39bA22hbzhV1yRRnw=",
-    "strip_prefix": "node_native_rules-0.0.1",
-    "patch_strip": 0
+    "strip_prefix": "node_native_rules-0.0.1"
 }
