@@ -77,6 +77,67 @@ py_binary(
     ],
 )
 
+py_binary(
+    name = "module_selector",
+    srcs = ["module_selector.py"],
+    deps = [
+        ":registry",
+    ],
+)
+
+py_binary(
+    name = "module_analyzer",
+    srcs = ["module_analyzer.py"],
+    deps = [
+        ":module_selector",
+        requirement("networkx"),
+        requirement("numpy"),
+        requirement("scipy"),
+        requirement("bazel-runfiles"),
+    ],
+    data = [
+        "@buildozer_binary//:buildozer.exe",
+    ]
+)
+
+genrule(
+    name = "bazelci_py",
+    srcs = ["@bazelci_py_file//file"],
+    outs = ["bazelci.py"],
+    cmd = "cp $(location @bazelci_py_file//file) $@",
+)
+
+genrule(
+    name = "bcr_presubmit_py",
+    srcs = ["@bcr_presubmit_py_file//file"],
+    outs = ["bcr_presubmit.py"],
+    cmd = "cp $(location @bcr_presubmit_py_file//file) $@",
+)
+
+py_library(
+    name = "bazelci",
+    srcs = ["bazelci.py"],
+)
+
+py_library(
+    name = "bcr_presubmit",
+    srcs = ["bcr_presubmit.py"],
+    deps = [
+        ":bazelci",
+        requirement("requests"),
+        requirement("pyyaml"),
+    ],
+)
+
+py_binary(
+    name = "setup_presubmit_repos",
+    srcs = ["setup_presubmit_repos.py"],
+    imports = ["."],
+    deps = [
+        ":bcr_presubmit",
+    ],
+)
+
 sh_test(
     name = "update_integrity_test",
     srcs = ["update_integrity_test.sh"],
@@ -90,5 +151,15 @@ py_test(
     ],
     deps = [
         "registry",
+    ],
+)
+
+py_test(
+    name = "module_selector_test",
+    srcs = [
+        "module_selector_test.py",
+    ],
+    deps = [
+        "module_selector",
     ],
 )
