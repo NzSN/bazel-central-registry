@@ -1,8 +1,9 @@
 {
-    "homepage": "https://github.com/NzSN/tree-sitter-kaleis.git",
+    "homepage": "https://github.com/NzSN/tree-sitter-kaleis",
     "maintainers": [
         {
             "email": "nzsn0101@gmail.com",
+            "github": "NzSN",
             "name": "NzSN"
         }
     ],
