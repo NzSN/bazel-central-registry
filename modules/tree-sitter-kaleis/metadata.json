@@ -1,0 +1,16 @@
+{
+    "homepage": "https://github.com/NzSN/tree-sitter-kaleis.git",
+    "maintainers": [
+        {
+            "email": "nzsn0101@gmail.com",
+            "name": "NzSN"
+        }
+    ],
+    "repository": [
+        "github:NzSN/tree-sitter-kaleis"
+    ],
+    "versions": [
+        "0.0.1"
+    ],
+    "yanked_versions": {}
+}
