@@ -1,0 +1,16 @@
+{
+    "homepage": "",
+    "maintainers": [
+        {
+            "email": "nzsn0101@gmail.com",
+            "name": "NzSN"
+        }
+    ],
+    "repository": [
+        "github:NzSN/tree-sitter-typescript"
+    ],
+    "versions": [
+        "0.0.1"
+    ],
+    "yanked_versions": {}
+}
