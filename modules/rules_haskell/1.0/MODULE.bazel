@@ -13,7 +13,7 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_license",
-    version = "0.0.7",
+    version = "1.0.0",
 )
 bazel_dep(
     name = "protobuf",
@@ -22,15 +22,19 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_cc",
-    version = "0.0.9",
+    version = "0.2.17",
 )
 bazel_dep(
     name = "rules_nodejs",
-    version = "5.8.3",
+    version = "6.7.4",
 )
 bazel_dep(
     name = "rules_python",
     version = "0.21.0",
+)
+bazel_dep(
+    name = "rules_shell",
+    version = "0.2.0",
 )
 bazel_dep(
     name = "bazel_skylib",
@@ -46,7 +50,7 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_sh",
-    version = "0.4.0",
+    version = "0.5.0",
 )
 
 ghc_version = use_extension("//extensions:ghc_version.bzl", "ghc_default_version")
@@ -79,7 +83,11 @@ haskell_toolchains = use_extension(
     "@rules_haskell//extensions:haskell_toolchains.bzl",
     "haskell_toolchains",
 )
-haskell_toolchains.bindists()
+haskell_toolchains.bindists(
+    dist = {
+        "linux_amd64": "deb10",
+    },
+)
 use_repo(
     haskell_toolchains,
     "all_bindist_toolchains",
@@ -119,27 +127,27 @@ use_repo(npm, "rules_haskell_npm")
 #### Development dependencies ####
 bazel_dep(
     name = "rules_nixpkgs_core",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 bazel_dep(
     name = "rules_nixpkgs_cc",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 bazel_dep(
     name = "rules_nixpkgs_python",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 bazel_dep(
     name = "rules_nixpkgs_go",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 bazel_dep(
     name = "rules_nixpkgs_posix",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 bazel_dep(
@@ -150,7 +158,7 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_nixpkgs_nodejs",
-    version = "0.12.0",
+    version = "0.13.0",
     dev_dependency = True,
 )
 
@@ -325,12 +333,27 @@ stack_snapshot_dev.package(
         setup_deps = ["@Cabal//:Cabal"],
     )
     for package in [
+        "proto-lens-runtime",
+    ]
+]
+
+# Setup-only packages that are only needed for compiling Setup.hs
+# with GHC < 9.6. They are resolved transitively through their
+# dependents. Marking them hidden avoids requesting them from the
+# resolver when GHC >= 9.6 or when using unpinned snapshots
+# (e.g. GHC 9.14.1) where they may not be resolvable.
+[
+    stack_snapshot_dev.package(
+        name = package,
+        hidden = True,
+        setup_deps = ["@Cabal//:Cabal"],
+    )
+    for package in [
         "HUnit",
         "bifunctors",
         "call-stack",
         "generic-deriving",
         "mono-traversable",
-        "proto-lens-runtime",
         "quickcheck-io",
         "transformers-compat",
         "type-errors",

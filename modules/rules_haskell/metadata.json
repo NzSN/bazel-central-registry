@@ -1,21 +1,21 @@
 {
-    "homepage": "https://github.com/tweag/rules_haskell/",
+    "homepage": "https://github.com/NzSN/rules_haskell/",
     "maintainers": [
         {
             "email": "claudio.bley@tweag.io",
             "github": "avdv",
-            "name": "Claudio Bley",
-            "github_user_id": 3471749
+            "github_user_id": 3471749,
+            "name": "Claudio Bley"
         },
         {
             "email": "andreas.herrmann@tweag.io",
             "github": "aherrmann",
-            "name": "Andreas Herrmann",
-            "github_user_id": 732652
+            "github_user_id": 732652,
+            "name": "Andreas Herrmann"
         }
     ],
     "repository": [
-        "github:tweag/rules_haskell"
+        "github:NzSN/rules_haskell"
     ],
     "versions": [
         "0.17",
